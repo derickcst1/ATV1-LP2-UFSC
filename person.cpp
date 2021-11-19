@@ -23,6 +23,7 @@ bool SaveDatabase(string filename, const vector<personPF> &listPF, const vector<
     return true;
 }
 
+
 bool LoadDatabase(string filename, vector<personPF> &listPF, vector<personPJ> &listPJ)
 {
     ifstream filereader(filename);
