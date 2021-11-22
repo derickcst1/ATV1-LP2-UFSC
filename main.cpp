@@ -20,7 +20,9 @@ int main()
     int menu;
     cin >> menu;
 
-    if (menu == 1)
+    switch (menu)
+    {
+    case 1:
     {
          
          personPF pX;
@@ -36,9 +38,8 @@ int main()
          getline(cin, pX.telefone);
          listPF.push_back(pX);
          
-         
     }
-    if (menu == 2)
+    case (2):
     {
         personPJ pZ;
          cout << "Escreva a razão social da empresa: " << endl;
@@ -50,22 +51,24 @@ int main()
          cout << "Escreva o telefone: " << endl;
          getline(cin, pZ.telefone);
          cout << "Escreva o capital social: " << endl;
-         getline(cin, pZ.capitalSocial);
+         cin >> pZ.capitalSocial;
          listPJ.push_back(pZ);
+
+
     }
-    if (menu == 3)
+    case (3):
     {
         /* c*/
     }
-    if (menu == 4)
+    case (4):
     {
         /* c*/
     }
-    if (menu == 5)
+    case (5):
     {
         /* c*/
     }
-    if (menu == 6)
+    case (6):
     {
         return 1;
     }
