@@ -4,9 +4,11 @@ int main()
 {
     vector<personPF> listPF;
     vector<personPJ> listPJ;
+    vector<string> listaUnificada;
     LoadDatabase("Database.dat", listPF, listPJ);
 
-
+    int menu;
+    while (menu != 6){
 
     cout << endl << "MY PAPA'S COMPANY - SIG " << endl;
     cout << "1 - Add PF..." << endl;
@@ -16,16 +18,18 @@ int main()
     cout << "5 - Print names in ascending order" << endl;
     cout << "6 - Exit " << endl;
 
-
-    int menu;
+    SaveDatabase("Database.dat", listPF, listPJ);
+    
     cin >> menu;
 
+    
     switch (menu)
     {
     case 1:
     {
-         
+         cin.ignore();
          personPF pX;
+         cout << "Adicionando PF" << endl;
          cout << "Escreva o nome: " << endl;
          getline(cin, pX.nome);
          cout << "Escreva o nome da mãe: " << endl;
@@ -37,11 +41,15 @@ int main()
          cout << "Escreva o telefone: " << endl;
          getline(cin, pX.telefone);
          listPF.push_back(pX);
-         
+         listaUnificada.push_back(pX.nome);
+         cout << "salvo!!" << endl;
+         break;
     }
     case (2):
     {
+         cin.ignore();
         personPJ pZ;
+        cout << "Adicionando PJ" << endl;
          cout << "Escreva a razão social da empresa: " << endl;
          getline(cin, pZ.razaoSocial);
          cout << "Escreva o cnpj: " << endl;
@@ -51,30 +59,53 @@ int main()
          cout << "Escreva o telefone: " << endl;
          getline(cin, pZ.telefone);
          cout << "Escreva o capital social: " << endl;
-         cin >> pZ.capitalSocial;
+         size_t tmp;
+         cin >> tmp;
+         pZ.capitalSocial = tmp;
          listPJ.push_back(pZ);
-
-
+         listaUnificada.push_back(pZ.razaoSocial);
+        break;
     }
     case (3):
     {
-        /* c*/
+       cout << "insira o número da PF que deseja remover" << endl;
+       int PF;
+       cin >> PF;
+       listPF.erase(listPF.begin()+PF);
+       break;
     }
     case (4):
     {
-        /* c*/
+        cout << "insira o número da PJ que deseja remover" << endl;
+        int PJ;
+        cin >> PJ;
+        listPJ.erase(listPJ.begin()+PJ);
+        break;
     }
     case (5):
     {
-        /* c*/
+        for (size_t i = 0; i < listPF.size(); i++)
+        {
+            listaUnificada.push_back(listPF.at(i).nome);
+        }
+        
+        for (size_t i = 0; i < listPJ.size(); i++)
+        {
+            listaUnificada.push_back(listPJ.at(i).razaoSocial);
+        }
+        sort (listaUnificada.begin(), listaUnificada.end());
+        for (size_t i = 0; i < listaUnificada.size(); i++)
+        {
+            cout << " -> " << listaUnificada.at(i) << endl;
+        }
+        break;
     }
-    case (6):
-    {
-        return 1;
+        
+    }
     }
     
     
-
+    /*
     personPF p1;
     p1.nome = "Antonio Sobieranski";
     p1.nomeMae = "Eva";
@@ -104,15 +135,15 @@ int main()
     p3.telefone = "(48) 0000-0000";
     p3.capitalSocial = 50000;
     listPJ.push_back(p3);
+    */
 
-    SaveDatabase("Database.dat", listPF, listPJ);
 
+
+    
 
     
 
     
-
-    //vector<string> listaUnificada;
     //for();
     //for();
 

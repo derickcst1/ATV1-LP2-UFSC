@@ -9,6 +9,7 @@ bool SaveDatabase(string filename, const vector<personPF> &listPF, const vector<
     {
         personPF p = listPF.at(i);
         filewriter << "1" << endl << p.nome << endl << p.nomeMae << endl << p.CPF << endl << p.endereco << endl << p.telefone << endl;
+
         //filewriter << "1" << endl << listPF.at(i).nome << endl <<
     }
 
@@ -16,6 +17,7 @@ bool SaveDatabase(string filename, const vector<personPF> &listPF, const vector<
     {
         personPJ p = listPJ.at(i);
         filewriter << "2" << endl << p.razaoSocial << endl << p.cnpj << endl << p.endereco << endl << p.telefone << endl << p.capitalSocial << endl;
+ 
     }
 
     filewriter.close();
